@@ -4,7 +4,7 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using Code2Xml.Core.Location;
-using TreeDotNet;
+
 
 namespace Code2Xml.Core.Tree
 {

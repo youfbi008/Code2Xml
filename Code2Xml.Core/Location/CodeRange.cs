@@ -215,7 +215,8 @@ namespace Code2Xml.Core.Location {
 		/// <returns></returns>
 		public XElement FindOutermostElement(XElement root) {
 			var ret = FindInnermostElement(root);
-			while (ret.Parent != null && ret.Parent.Elements().Count() == 1) {
+            while (ret.Parent != null && (ret.IsToken() || ret.Parent.Elements().Count() == 1))
+            {
 				ret = ret.Parent;
 			}
 			return ret;

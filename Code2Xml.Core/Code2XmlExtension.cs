@@ -261,13 +261,23 @@ namespace Code2Xml.Core {
 		}
 
 		public static string NameWithId(this XElement element) {
-			return element.Name() + element.Attribute("id").Value;
+            if (element.Attribute("id") != null)
+            {
+                return element.Name() + element.Attribute("id").Value;
+            }
+            return element.Name();
 		}
 
 		public static string NameOrTokenWithId(this XElement element) {
-			return element.IsTokenSet()
-					? element.Name() + element.Attribute("id").Value + element.TokenText()
-					: element.Name() + element.Attribute("id").Value;
+            if (element.Attribute("id") != null)
+            {
+                return element.IsTokenSet()
+                        ? element.Name() + element.Attribute("id").Value + element.TokenText()
+                        : element.Name() + element.Attribute("id").Value;
+            }
+            return element.IsTokenSet()
+                                ? element.Name() + element.TokenText()
+                                : element.Name();
 		}
     }
 }
