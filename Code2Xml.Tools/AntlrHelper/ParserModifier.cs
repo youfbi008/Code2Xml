@@ -36,8 +36,7 @@ namespace Code2Xml.Tools.AntlrHelper {
 				new Regex(@"private ([^.]*Parser)");
 
 		private static readonly Regex TraceInRegex =
-				new Regex(
-						@"TraceIn\((.*), .*\)");
+				new Regex(@"TraceIn\((.*), .*\)");
 
 		public static void Modify(string path) {
 			Contract.Requires(path != null);
@@ -72,8 +71,8 @@ namespace Code2Xml.Tools.AntlrHelper {
 			Contract.Requires(code != null);
 
 			return code
-					.Replace("ITreeAdaptor", "Antlr3AstBuilder")
-					.Replace("CommonTreeAdaptor", "Antlr3AstBuilder");
+					.Replace("ITreeAdaptor", "CstBuilderForAntlr3")
+					.Replace("CommonTreeAdaptor", "CstBuilderForAntlr3");
 		}
 
 		public static string ModifyParserRuleReturnScope(string code) {
@@ -81,7 +80,7 @@ namespace Code2Xml.Tools.AntlrHelper {
 
 			return code.Replace(
 					": ParserRuleReturnScope<IToken>",
-					": Antlr3AstNode");
+					": Antlr3CstNode");
 		}
 
 		private static string ModifyAstParserRuleReturnScope(string code) {
@@ -89,7 +88,7 @@ namespace Code2Xml.Tools.AntlrHelper {
 
 			return code.Replace(
 					"AstParserRuleReturnScope<object, IToken>",
-					"Antlr3AstNode");
+					"Antlr3CstNode");
 		}
 
 		public static string ModifyAddChild(string code) {
@@ -112,12 +111,12 @@ namespace Code2Xml.Tools.AntlrHelper {
 			// TraceIn("typeParameters", 11);
 			// AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 			// =>
-			// var retval = new Antlr3AstNode($1);
-			return TraceInRegex.Replace(code, "var retval = new Antlr3AstNode($1)")
+			// var retval = new Antlr3CstNode("typeParameters", 11);
+			return TraceInRegex.Replace(code, "var retval = new Antlr3CstNode($1)")
 					.Replace(
 							"AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();",
 							"")
-					.Replace("Antlr3AstNode retval = new Antlr3AstNode();", "");
+					.Replace("Antlr3CstNode retval = new Antlr3CstNode();", "");
 		}
 
 		public static string ModifyAccessModifier(string code) {
