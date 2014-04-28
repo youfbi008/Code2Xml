@@ -35,9 +35,10 @@ namespace Code2Xml.Languages.Tests {
 		private static IEnumerable<TestCaseData> TestCases {
 			get {
 				var names = new[] {
+                    "Cobol85",
 					"C",
 					"CSharp",
-                    "Cobol85",
+                    
 					"Java",
 					"JavaScript",
 					"Lua",

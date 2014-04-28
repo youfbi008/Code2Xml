@@ -33,10 +33,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Paraiba">
-      <HintPath>..\packages\Paraiba.1.1.1.91\lib\net40\Paraiba.dll</HintPath>
+      <HintPath>..\packages\Paraiba.1.1.2.92\lib\net40\Paraiba.dll</HintPath>
     </Reference>
     <Reference Include="Paraiba.Experiment">
-      <HintPath>..\packages\Paraiba.Experiment.1.1.1.91\lib\net40\Paraiba.Experiment.dll</HintPath>
+      <HintPath>..\packages\Paraiba.Experiment.1.1.2.92\lib\net40\Paraiba.Experiment.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
